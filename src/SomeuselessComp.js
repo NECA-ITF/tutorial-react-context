@@ -1,13 +1,15 @@
-import { useContext } from "react";
-import GlobalContext from "./context/GlobalContext";
+import { connect } from "react-redux";
 
 
 
 function SomeuselessComp(props) {
-  const { count } = useContext(GlobalContext)
+  
 
-  return <span>{count}</span>
+  return <span>{props.count.count}</span>
 }
 
+const mapStateToProps = state => ({
+  count: state.count
+})
 
-export default SomeuselessComp;
+export default connect(mapStateToProps)(SomeuselessComp);
